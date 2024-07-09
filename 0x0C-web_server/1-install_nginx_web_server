@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# Installs nginx server on macOS using Homebrew
+# Installs and configures nginx server on Ubuntu
 
-# Install nginx using Homebrew
-brew update
-brew install nginx
+# Update package list and install nginx
+apt-get update
+apt-get -y install nginx
 
-# Allow nginx to start at login and start it now
-brew services start nginx
+# Allow 'Nginx HTTP' through the firewall
+ufw allow 'Nginx HTTP'
 
-# Replace the default index.html with "Hello World!" message
-echo "Hello World!" | sudo tee /usr/local/var/www/index.html
+# Replace the default page with "Hello World!"
+echo "Hello World!" > /var/www/html/index.html
 
-# Restart nginx to apply changes
-brew services restart nginx
+# Restart nginx using service command
+service nginx restart
