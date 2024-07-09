@@ -1,17 +1,7 @@
 #!/usr/bin/env bash
-# Installs and configures Nginx to serve "Hello World!" on the root path
-
-# Update Homebrew
-brew update
-
-# Install Nginx
-brew install nginx
-
-# Ensure Nginx is listening on port 80
-sed -i '' 's/listen 8080;/listen 80;/g' /usr/local/etc/nginx/nginx.conf
-
-# Replace the default Nginx index page with "Hello World!"
-echo "Hello World!" > /usr/local/var/www/index.html
-
-# Start Nginx
-sudo nginx
+# Installs nginx server
+apt-get update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
+service nginx start
