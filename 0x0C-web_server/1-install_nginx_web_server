@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
-
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
-   exit 1
-fi
-
-# Installs nginx server and configures it to display "Hello World!"
-apt-get update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
+# Installs nginx server
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
 echo "Hello World!" > /var/www/html/index.html
 service nginx start
